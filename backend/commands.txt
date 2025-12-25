@@ -1,4 +1,14 @@
 ##### DOCKER COMMANDS #####
 
+# BUILD COMMAND #
+
 docker build -t invito-backend .
+
+# RUN COMMAND #
+
 docker run -p 8000:8000 --env-file .env invito-backend
+
+# SHELL COMMAND 
+
+docker run -it --env-file .env invito-backend /bin/bash
+
