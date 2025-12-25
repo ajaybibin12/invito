@@ -1,11 +1,22 @@
 from fastapi import FastAPI
 from app.api.v1.auth import router as auth_router
-
 from app.core.config import settings
+from app.core.database import SessionLocal
+from app.core.init_admin import create_admin_if_not_exists
+from sqlalchemy.orm import Session
+
 
 app = FastAPI(title=settings.APP_NAME, version=settings.VERSION)
 
 app.include_router(auth_router)
+
+@app.on_event("startup")
+def startup_event():
+    db: Session = SessionLocal()
+    try:
+        create_admin_if_not_exists(db)
+    finally:
+        db.close()
 
 @app.get("/health")
 def health_check():
