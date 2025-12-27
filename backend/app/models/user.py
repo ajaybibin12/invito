@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean
-from app.core.database import SessionLocal, Base
+from app.core.database import Base
+from sqlalchemy.orm import relationship
 
 
 
@@ -11,3 +12,8 @@ class User(Base):
     hashed_password = Column(String, nullable=False)
     role = Column(String, default="attendee")
     is_active = Column(Boolean, default=True)
+    refresh_tokens = relationship(
+    "RefreshToken",
+    back_populates="user",
+    cascade="all, delete-orphan"
+)

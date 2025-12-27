@@ -15,6 +15,8 @@ from app.core.database import Base
 # import ALL models so Alembic sees them
 from app.models.user import User  # noqa: F401
 from app.models.event import Event  # noqa: F401
+from app.models.invite import Invite  # noqa: F401
+from app.models.refresh_token import RefreshToken  # noqa: F401
 
 # -------------------------------
 # ALEMBIC CONFIG

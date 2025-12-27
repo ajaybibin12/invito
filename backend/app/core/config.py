@@ -13,6 +13,16 @@ class Settings(BaseSettings):
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
     SECRET_KEY: str 
 
+    # Frontend
+    FRONTEND_URL: str = "http://localhost:5173"
+
+    # Email (SMTP)
+    SMTP_HOST: str
+    SMTP_PORT: int
+    SMTP_USER: str
+    SMTP_PASSWORD: str
+    EMAIL_FROM: str
+
     class Config:
         env_file = ".env"
 
